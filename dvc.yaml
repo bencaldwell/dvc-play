@@ -19,3 +19,14 @@ stages:
     - featurize.ngrams
     outs:
     - data\features
+  train:
+    cmd: python src/train.py data/features model.pkl
+    deps:
+    - src/train.py
+    - data/features
+    params:
+    - train.seed
+    - train.n_estimators
+    outs:
+    - model.pkl
+

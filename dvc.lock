@@ -35,3 +35,21 @@ featurize:
     md5: 2b5e0fdd787b569b4fcb4bafa543d270.dir
     size: 7083899
     nfiles: 2
+train:
+  cmd: python src/train.py data/features model.pkl
+  deps:
+  - path: data/features
+    md5: 2b5e0fdd787b569b4fcb4bafa543d270.dir
+    size: 7083899
+    nfiles: 2
+  - path: src/train.py
+    md5: ad8e71b2cca4334a7d3bb6495645068c
+    size: 931
+  params:
+    params.yaml:
+      train.n_estimators: 50
+      train.seed: 20170428
+  outs:
+  - path: model.pkl
+    md5: 583ea9e42587294823395b7d0f5499f2
+    size: 2664468
