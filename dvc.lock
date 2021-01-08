@@ -47,9 +47,9 @@ train:
     size: 931
   params:
     params.yaml:
-      train.n_estimators: 50
+      train.n_estimators: 100
       train.seed: 20170428
   outs:
   - path: model.pkl
-    md5: 583ea9e42587294823395b7d0f5499f2
-    size: 2664468
+    md5: 15d37f3d96145e3074c62e69e60ab990
+    size: 5377064
