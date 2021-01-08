@@ -2,43 +2,43 @@ stages:
   prepare:
     cmd: python .\src\prepare.py .\data\data.xml
     deps:
-    - .\data\data.xml
-    - .\src\prepare.py
+      - .\data\data.xml
+      - .\src\prepare.py
     params:
-    - prepare.seed
-    - prepare.split
+      - prepare.seed
+      - prepare.split
     outs:
-    - .\data\prepared
+      - .\data\prepared
   featurize:
     cmd: python .\src\featurization.py data\prepared data\features
     deps:
-    - .\data\prepared
-    - .\src\featurization.py
+      - .\data\prepared
+      - .\src\featurization.py
     params:
-    - featurize.max_features
-    - featurize.ngrams
+      - featurize.max_features
+      - featurize.ngrams
     outs:
-    - data\features
+      - data\features
   train:
     cmd: python src/train.py data/features model.pkl
     deps:
-    - src/train.py
-    - data/features
+      - src/train.py
+      - data/features
     params:
-    - train.seed
-    - train.n_estimators
+      - train.seed
+      - train.n_estimators
     outs:
-    - model.pkl
+      - model.pkl
 
   evaluate:
     cmd: python src/evaluate.py model.pkl data/features scores.json prc.json
     deps:
-    - data/features
-    - model.pkl
-    - src/evaluate.py
+      - data/features
+      - model.pkl
+      - src/evaluate.py
     metrics:
-    - scores.json:
-        cache: false
+      - scores.json:
+          cache: false
     plots:
-    - prc.json:
-        cache: false
+      - prc.json:
+          cache: false
